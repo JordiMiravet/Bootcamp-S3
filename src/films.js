@@ -1,9 +1,11 @@
 import { movies } from "../src/data.js"
 
+// --------------------------------------------------
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
   let result =  array.map(film => film.director);
-  console.log("EXERCICE 1 ->", result);
+
+  // console.log("EXERCICE 1 ->", result);
   return result;
 }
 
@@ -13,57 +15,61 @@ getAllDirectors(movies);
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, directorName) {
   const result = array.filter( movie => movie.director === directorName);
-  console.log(result)
-  return result
+
+  // console.log("EXERCICE 2 ->", result);
+  return result;
 }
+
 getMoviesFromDirector(movies, "Steven Spielberg")
 
+// --------------------------------------------------
 // Exercise 3: Calculate the average of the films of a given director.
-function moviesAverageOfDirector(array, director) {
-  
-}
 
+function moviesAverageOfDirector(arrayMovies, directorName) {
+  const movies = arrayMovies.filter(movie => movie.director === directorName);
+
+  let totalScore = movies.reduce((acc, movie) => acc += movie.score, 0);
+  let averageScore = totalScore / movies.length;
+  let roundedAverage = Number.isInteger(averageScore) 
+    ? parseFloat(averageScore) 
+    : parseFloat(averageScore.toFixed(2))
+  
+  // console.log("EXERCICE 3 ->", roundedAverage);
+  return roundedAverage;
+}
+moviesAverageOfDirector(movies, "Steven Spielberg");
+
+// --------------------------------------------------
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
   
 }
 
+// --------------------------------------------------
 // Exercise 5: Order by year, ascending
 function orderByYear() {
 
 }
 
+// --------------------------------------------------
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory() {
 
 }
 
+// --------------------------------------------------
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {
 
 }
 
+// --------------------------------------------------
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
   
 }
 
-
-
-// The following is required to make unit tests work.
-/* Environment setup. Do not modify the below code. */
-// if (typeof module !== 'undefined') {
-//   module.exports = {
-//     getAllDirectors,
-//     getMoviesFromDirector,
-//     moviesAverageOfDirector,
-//     orderAlphabetically,
-//     orderByYear,
-//     moviesAverageByCategory,
-//     hoursToMinutes,
-//     bestFilmOfYear,
-//   };
-// }
+// --------------------------------------------------
 
 export {
   getAllDirectors,
@@ -75,3 +81,20 @@ export {
   hoursToMinutes,
   bestFilmOfYear,
 };
+
+// The following is required to make unit tests work.
+/* Environment setup. Do not modify the below code. */
+/*
+if (typeof module !== 'undefined') {
+  module.exports = {
+    getAllDirectors,
+    getMoviesFromDirector,
+    moviesAverageOfDirector,
+    orderAlphabetically,
+    orderByYear,
+    moviesAverageByCategory,
+    hoursToMinutes,
+    bestFilmOfYear,
+  };
+}
+*/

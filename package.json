@@ -4,8 +4,8 @@
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watchAll --verbose=false"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "jest --watchAll --verbose=true"
   },
   "devDependencies": {
     "jest": "^29.2.2",

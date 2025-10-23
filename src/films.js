@@ -1,14 +1,22 @@
+import { movies } from "../src/data.js"
+
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
-  let result =  ???;
+  let result =  array.map(film => film.director);
   console.log("EXERCICE 1 ->", result);
   return result;
 }
 
+getAllDirectors(movies);
+
+// --------------------------------------------------
 // Exercise 2: Get the films of a certain director
-function getMoviesFromDirector(array, director) {
- 
+function getMoviesFromDirector(array, directorName) {
+  const result = array.filter( movie => movie.director === directorName);
+  console.log(result)
+  return result
 }
+getMoviesFromDirector(movies, "Steven Spielberg")
 
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(array, director) {
@@ -44,15 +52,26 @@ function bestFilmOfYear() {
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
-if (typeof module !== 'undefined') {
-  module.exports = {
-    getAllDirectors,
-    getMoviesFromDirector,
-    moviesAverageOfDirector,
-    orderAlphabetically,
-    orderByYear,
-    moviesAverageByCategory,
-    hoursToMinutes,
-    bestFilmOfYear,
-  };
-}
+// if (typeof module !== 'undefined') {
+//   module.exports = {
+//     getAllDirectors,
+//     getMoviesFromDirector,
+//     moviesAverageOfDirector,
+//     orderAlphabetically,
+//     orderByYear,
+//     moviesAverageByCategory,
+//     hoursToMinutes,
+//     bestFilmOfYear,
+//   };
+// }
+
+export {
+  getAllDirectors,
+  getMoviesFromDirector,
+  moviesAverageOfDirector,
+  orderAlphabetically,
+  orderByYear,
+  moviesAverageByCategory,
+  hoursToMinutes,
+  bestFilmOfYear,
+};

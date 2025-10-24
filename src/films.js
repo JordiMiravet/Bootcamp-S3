@@ -28,23 +28,30 @@ getMoviesFromDirector(movies, "Steven Spielberg")
 function moviesAverageOfDirector(arrayMovies, directorName) {
   const movies = arrayMovies.filter(movie => movie.director === directorName);
 
-  let totalScore = movies.reduce((acc, movie) => acc += movie.score, 0);
-  let averageScore = totalScore / movies.length;
-  let roundedAverage = Number.isInteger(averageScore) 
+  const totalScore = movies.reduce((acc, movie) => acc += movie.score, 0);
+  const averageScore = totalScore / movies.length;
+  const roundedAverage = Number.isInteger(averageScore) 
     ? parseFloat(averageScore) 
     : parseFloat(averageScore.toFixed(2))
   
   // console.log("EXERCICE 3 ->", roundedAverage);
   return roundedAverage;
 }
+
 moviesAverageOfDirector(movies, "Steven Spielberg");
 
 // --------------------------------------------------
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
+  const filmsByTitle = array
+    .map(movie => movie.title)
+    .sort((a, b) => a.localeCompare(b))
+    .slice(0, 20)
   
+  console.log(filmsByTitle);
+  return filmsByTitle
 }
-
+orderAlphabetically(movies)
 // --------------------------------------------------
 // Exercise 5: Order by year, ascending
 function orderByYear() {

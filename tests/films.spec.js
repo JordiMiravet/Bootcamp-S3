@@ -10,7 +10,9 @@ import {
   bestFilmOfYear,
 } from "../src/films.js"
 
+// --------------------------------------------------
 // Exercise 1
+
 describe('Function "getAllDirectors"', () => {
   it('should be declared', () => {
     expect(typeof getAllDirectors).toBe('function');
@@ -50,7 +52,9 @@ describe('Function "getAllDirectors"', () => {
   });
 });
 
+// --------------------------------------------------
 // Exercise 2
+
 describe('Function "getMoviesFromDirector"', () => {
   it('should be declared', () => {
     expect(typeof getMoviesFromDirector).toBe('function');
@@ -97,7 +101,9 @@ describe('Function "getMoviesFromDirector"', () => {
 
 });
 
+// --------------------------------------------------
 // Exercise 3
+
 describe('Function "moviesAverageOfDirector"', () => {
   it('should be declared', () => {
     expect(typeof moviesAverageOfDirector).toBe('function');
@@ -142,7 +148,9 @@ describe('Function "moviesAverageOfDirector"', () => {
 
 });
 
+// --------------------------------------------------
 // Exercise 4
+
 describe('Function "orderAlphabetically"', () => {
   it('should be declared', () => {
     expect(typeof orderAlphabetically).toBe('function');

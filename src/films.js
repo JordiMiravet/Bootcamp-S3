@@ -1,6 +1,6 @@
 import { movies } from "../src/data.js"
 
-// --------------------------------------------------
+// ----------------------------------------------------------------------------------------------------
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
   let result =  array.map(film => film.director);
@@ -11,7 +11,8 @@ function getAllDirectors(array) {
 
 getAllDirectors(movies);
 
-// --------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, directorName) {
   const result = array.filter( movie => movie.director === directorName);
@@ -22,7 +23,8 @@ function getMoviesFromDirector(array, directorName) {
 
 getMoviesFromDirector(movies, "Steven Spielberg")
 
-// --------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 3: Calculate the average of the films of a given director.
 
 function moviesAverageOfDirector(arrayMovies, directorName) {
@@ -37,10 +39,10 @@ function moviesAverageOfDirector(arrayMovies, directorName) {
   // console.log("EXERCICE 3 ->", roundedAverage);
   return roundedAverage;
 }
-
 moviesAverageOfDirector(movies, "Steven Spielberg");
 
-// --------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
   const filmsByTitle = array
@@ -48,35 +50,49 @@ function orderAlphabetically(array) {
     .sort((a, b) => a.localeCompare(b))
     .slice(0, 20)
   
-  console.log(filmsByTitle);
+  // console.log(filmsByTitle);
   return filmsByTitle
 }
 orderAlphabetically(movies)
-// --------------------------------------------------
+
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 5: Order by year, ascending
-function orderByYear() {
-
+function orderByYear(array) {
+  const filmsByYear = array.slice()
+   filmsByYear.sort((a, b) => {
+    return a.year !== b.year 
+      ? a.year - b.year
+      : a.title.localeCompare(b.title)
+  })
+   return filmsByYear;
 }
+//console.log(orderByYear(movies))
+orderByYear(movies)
 
-// --------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory() {
 
 }
 
-// --------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {
 
 }
 
-// --------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
   
 }
 
-// --------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
 
 export {
   getAllDirectors,

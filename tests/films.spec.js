@@ -10,7 +10,8 @@ import {
   bestFilmOfYear,
 } from "../src/films.js"
 
-// --------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 1
 
 describe('Function "getAllDirectors"', () => {
@@ -52,7 +53,8 @@ describe('Function "getAllDirectors"', () => {
   });
 });
 
-// --------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 2
 
 describe('Function "getMoviesFromDirector"', () => {
@@ -101,7 +103,8 @@ describe('Function "getMoviesFromDirector"', () => {
 
 });
 
-// --------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 3
 
 describe('Function "moviesAverageOfDirector"', () => {
@@ -148,7 +151,8 @@ describe('Function "moviesAverageOfDirector"', () => {
 
 });
 
-// --------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 4
 
 describe('Function "orderAlphabetically"', () => {
@@ -258,7 +262,10 @@ describe('Function "orderAlphabetically"', () => {
   });
 });
 
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 5
+
 describe('Function "orderByYear"', () => {
   it('should be declared', () => {
     expect(typeof orderByYear).toBe('function');
@@ -298,15 +305,52 @@ describe('Function "orderByYear"', () => {
   });
 });
 
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 6
-// YOUR CODE HERE. Test moviesAverageByCategory()
+
 describe('Function "moviesAverageByCategory"', () => {
-  it('ADD YOUR CODE IN films.spec.js file', () => {
-    expect(typeof hoursToMinutes).toBe('coffee');
+  it('should be declared as a function', () => {
+    expect(typeof moviesAverageByCategory).toBe('function');
+  });
+  it("should return 0 if the input array is empty", () => {
+    expect(moviesAverageByCategory([], "Action")).toBe(0);
+  });
+  it("should return an number", () => {
+    expect(typeof moviesAverageByCategory(movies, "Crime")).toBe("number");
+  });
+  it("should return 0 if no movies in the category", () => {
+    expect(moviesAverageByCategory(movies, "Isekai")).toBe(0)
+  });
+  it("should match genre ignoring case", () => {
+    const testMovies = [
+      { genre: ["AcTiOn"], score: 8 },
+      { genre: ["ACTION"], score: 6 }
+    ];
+    expect(moviesAverageByCategory(testMovies, "action")).toBe(7);
+  });
+  it("should return an integer if the average is whole", () => {
+    const testMovies = [
+      { genre: ["Action"], score: 8 },
+      { genre: ["Action"], score: 7 },
+      { genre: ["Action"], score: 6 }
+    ];
+    expect(moviesAverageByCategory(testMovies, "Action")).toBe(7);
+  });
+  it("should return a number with 2 decimals if the average is not whole", () => {
+    const testMovies = [
+      { genre: ["Action"], score: 7 },
+      { genre: ["Action"], score: 6 },
+      { genre: ["Action"], score: 6 }
+    ];
+    expect(moviesAverageByCategory(testMovies, "Action")).toBe(6.33);
   });
 });
 
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 7
+
 describe('Function "hoursToMinutes"', () => {
   it('should be declared', () => {
     expect(typeof hoursToMinutes).toBe('function');
@@ -340,7 +384,10 @@ describe('Function "hoursToMinutes"', () => {
   });
 });
 
+
+// ----------------------------------------------------------------------------------------------------
 // Exercise 8
+
 describe('Function "bestFilmOfYear"', () => {
   it('should be declared', () => {
     expect(typeof bestFilmOfYear).toBe('function');

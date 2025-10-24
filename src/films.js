@@ -8,7 +8,6 @@ function getAllDirectors(array) {
   // console.log("EXERCICE 1 ->", result);
   return result;
 }
-
 getAllDirectors(movies);
 
 
@@ -20,16 +19,13 @@ function getMoviesFromDirector(array, directorName) {
   // console.log("EXERCICE 2 ->", result);
   return result;
 }
-
 getMoviesFromDirector(movies, "Steven Spielberg")
 
 
 // ----------------------------------------------------------------------------------------------------
 // Exercise 3: Calculate the average of the films of a given director.
-
 function moviesAverageOfDirector(arrayMovies, directorName) {
   const movies = arrayMovies.filter(movie => movie.director === directorName);
-
   const totalScore = movies.reduce((acc, movie) => acc += movie.score, 0);
   const averageScore = totalScore / movies.length;
   const roundedAverage = Number.isInteger(averageScore) 
@@ -65,18 +61,32 @@ function orderByYear(array) {
       ? a.year - b.year
       : a.title.localeCompare(b.title)
   })
-   return filmsByYear;
+  return filmsByYear;
 }
-//console.log(orderByYear(movies))
 orderByYear(movies)
+//console.log(orderByYear(movies))
 
 
 // ----------------------------------------------------------------------------------------------------
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
-
+function moviesAverageByCategory(array, genreFind ) {
+  if(array.length === 0) return 0;
+  
+  const category = array.filter( movie => 
+    movie.genre.some(g => g.toLowerCase() === genreFind.toLowerCase())
+  );
+  if(category.length === 0) return 0;
+  
+  const score = category.reduce((acc, movie) => acc += movie.score ,0);
+  const average = score/category.length
+  const scoreAverage = Number.isInteger(average) 
+    ? average 
+    : average.toFixed(2);
+  
+  return Number(scoreAverage);
 }
-
+moviesAverageByCategory(movies, "Drama");
+// console.log(moviesAverageByCategory(movies, "Drama"));
 
 // ----------------------------------------------------------------------------------------------------
 // Exercise 7: Modify the duration of movies to minutes

@@ -5,10 +5,10 @@ import { movies } from "../src/data.js"
 function getAllDirectors(array) {
   let result =  array.map(film => film.director);
 
-  // console.log("EXERCICE 1 ->", result);
   return result;
 }
 getAllDirectors(movies);
+// console.log("EXERCICE 1 ->", getAllDirectors(movies));
 
 
 // ----------------------------------------------------------------------------------------------------
@@ -16,10 +16,10 @@ getAllDirectors(movies);
 function getMoviesFromDirector(array, directorName) {
   const result = array.filter( movie => movie.director === directorName);
 
-  // console.log("EXERCICE 2 ->", result);
   return result;
 }
 getMoviesFromDirector(movies, "Steven Spielberg")
+// console.log("EXERCICE 2 ->", getMoviesFromDirector(movies, "Steven Spielberg"));
 
 
 // ----------------------------------------------------------------------------------------------------
@@ -32,10 +32,10 @@ function moviesAverageOfDirector(arrayMovies, directorName) {
     ? parseFloat(averageScore) 
     : parseFloat(averageScore.toFixed(2))
   
-  // console.log("EXERCICE 3 ->", roundedAverage);
   return roundedAverage;
 }
 moviesAverageOfDirector(movies, "Steven Spielberg");
+// console.log("EXERCICE 3 ->", moviesAverageOfDirector(movies, "Steven Spielberg"));
 
 
 // ----------------------------------------------------------------------------------------------------
@@ -46,10 +46,10 @@ function orderAlphabetically(array) {
     .sort((a, b) => a.localeCompare(b))
     .slice(0, 20)
   
-  // console.log(filmsByTitle);
   return filmsByTitle
 }
-orderAlphabetically(movies)
+orderAlphabetically(movies);
+// console.log("EXERCICE 4 ->",orderAlphabetically(movies));
 
 
 // ----------------------------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ function orderByYear(array) {
   return filmsByYear;
 }
 orderByYear(movies)
-//console.log(orderByYear(movies))
+// console.log("EXERCICE 5 ->",orderByYear(movies))
 
 
 // ----------------------------------------------------------------------------------------------------
@@ -86,7 +86,8 @@ function moviesAverageByCategory(array, genreFind ) {
   return Number(scoreAverage);
 }
 moviesAverageByCategory(movies, "Drama");
-// console.log(moviesAverageByCategory(movies, "Drama"));
+// console.log("EXERCICE 6 ->",moviesAverageByCategory(movies, "Drama"));
+
 
 // ----------------------------------------------------------------------------------------------------
 // Exercise 7: Modify the duration of movies to minutes
@@ -108,18 +109,30 @@ function hoursToMinutes(array) {
     }
 
     return { ...film, duration: durationInMinutes };
-  })
+  });
   return films;
 }
 hoursToMinutes(movies)
-console.log(hoursToMinutes(movies))
+// console.log("EXERCICE 7 ->",hoursToMinutes(movies))
 
 
 // ----------------------------------------------------------------------------------------------------
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+function bestFilmOfYear(array, year) {
+  const filmsOfTheYear = array.filter(film => film.year === year);
+  if(filmsOfTheYear.length === 0) return [];
+
+  const bestFilm = filmsOfTheYear.reduce((acc, n) => {
+    return acc.score > n.score
+      ? acc 
+      : n;
+      
+  }, filmsOfTheYear[0])
+
+  return [bestFilm];
 }
+bestFilmOfYear(movies, 2000);
+// console.log("EXERCICE 8 ->",bestFilmOfYear(movies, 2001));
 
 
 // ----------------------------------------------------------------------------------------------------
@@ -134,20 +147,3 @@ export {
   hoursToMinutes,
   bestFilmOfYear,
 };
-
-// The following is required to make unit tests work.
-/* Environment setup. Do not modify the below code. */
-/*
-if (typeof module !== 'undefined') {
-  module.exports = {
-    getAllDirectors,
-    getMoviesFromDirector,
-    moviesAverageOfDirector,
-    orderAlphabetically,
-    orderByYear,
-    moviesAverageByCategory,
-    hoursToMinutes,
-    bestFilmOfYear,
-  };
-}
-*/

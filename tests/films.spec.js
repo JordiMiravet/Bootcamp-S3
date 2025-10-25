@@ -440,4 +440,9 @@ describe('Function "bestFilmOfYear"', () => {
     ]);
   });
 
+  it('should return an empty array if the year dont have films', () => {
+    const testArr = [];
+    expect(bestFilmOfYear(testArr, 1595)).toEqual([]);
+  });
+  
 });

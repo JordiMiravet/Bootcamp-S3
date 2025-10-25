@@ -90,9 +90,29 @@ moviesAverageByCategory(movies, "Drama");
 
 // ----------------------------------------------------------------------------------------------------
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(array) {
+  const films = array.map( film => {
+    let durationInMinutes = 0;
 
+    if(film.duration.includes("h")){
+      const timeArray = film.duration.split(" ", 2);
+
+      const hours = timeArray[0].replace("h", "");
+      const minutes = timeArray[1] 
+        ? timeArray[1].replace("min", "") 
+        : 0;
+
+      durationInMinutes = (Number(hours) * 60) + Number(minutes);
+    } else {
+      durationInMinutes = Number(film.duration.replace("min", ""));
+    }
+
+    return { ...film, duration: durationInMinutes };
+  })
+  return films;
 }
+hoursToMinutes(movies)
+console.log(hoursToMinutes(movies))
 
 
 // ----------------------------------------------------------------------------------------------------

@@ -8,14 +8,12 @@
 Este proyecto contiene una serie de ejercicios en JavaScript diseñados para practicar el uso de métodos de arrays (`map`, `filter`, `reduce`, `sort`, etc.) aplicados sobre un conjunto de datos de películas.
 Cada ejercicio plantea un reto diferente, como obtener directores, calcular promedios, ordenar películas o transformar sus duraciones. Además, se incluyen pruebas automatizadas con `Jest` para verificar que las funciones se comporten correctamente.
 
-
-## Objetivos del proyecto
+## Objetivos:
 
 - Practicar el manejo de arrays y objetos en JavaScript.
 - Reforzar el uso de funciones de orden superior (`map`, `filter`, `reduce`, `sort`).
 - Comprender cómo escribir código limpio y modular.
 - Aprender a validar código mediante tests automatizados.
-
 
 ## Instalación:
 
@@ -53,14 +51,16 @@ Implementación:
 ```javascript
 function getAllDirectors(array) {
     let result =  array.map(film => film.director);
-    
+    // Se genera un nuevo array con los nombres de los directores
+
     return result;
+    // Se retorna el array
 }
 ```
 
 #### Explicación técnica:
 
-- Se utiliza el método `.map()`, que recorre el array original (`array` / movies) y genera un nuevo array sin modificar el original.
+- Se utiliza el método `.map()`, que recorre el array original (`array` = `movies`) y genera un nuevo array sin modificar el original.
 - En cada iteración, se accede a la propiedad `director` de cada objeto `film`.
 - El resultado es un nuevo array compuesto únicamente por los nombres de los directores.
 - Finalmente, el array generado se retorna mediante `return result`.
@@ -97,7 +97,7 @@ function getMoviesFromDirector(array, directorName) {
 
 #### Descripción:
 
-Esta función calcula el promedio de puntuaciones (score) de todas las películas dirigidas por un director específico.
+Esta función calcula el promedio de puntuaciones (`score`) de todas las películas dirigidas por un director específico.
 
 Implementación:
 ```javascript
@@ -268,7 +268,7 @@ Implementación:
 function hoursToMinutes(array) {
 const films = array.map(film => {
     let durationInMinutes = 0;
-        // Se inicializa la duración en 0
+    // Se inicializa la duración en 0
 
     if(film.duration.includes("h")) {
         const timeArray = film.duration.split(" ", 2);
@@ -316,7 +316,7 @@ const films = array.map(film => {
 
 #### Descripción:
 
-Esta función devuelve la película con mejor puntuación (score) de un año específico. Si no hay películas en ese año, devuelve un array vacío. El resultado se retorna dentro de un array para mantener consistencia en la estructura de datos.
+Esta función devuelve la película con mejor puntuación (`score`) de un año específico. Si no hay películas en ese año, devuelve un array vacío. El resultado se retorna dentro de un array para mantener consistencia en la estructura de datos.
 
 Implementación:
 ```javascript
